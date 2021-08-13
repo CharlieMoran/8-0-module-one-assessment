@@ -134,12 +134,17 @@ return ratingCountObj;
  * If the inputted `movies` array is empty or the ID does not match any movie, return `null`.
  * @param {Object[]} movies - An array of movies. See the `movies.js` file for an example of this array.
  * @param {string} id - A unique `imdbID`.
- * @returns {Object|null} The MOVIE OBJECT INDEX with the matching `imdbID`.
+ * @returns {Object|null} The MOVIE OBJECT at INDEX with the matching `imdbID`.
  *
  * EXAMPLE:
  *  findById(movies, "tt1979376");
- *  //> {
-      // Toy Story 4
+ *  //> {...
+      // title: Toy Story 4,
+      //...
+      // imdbID: "tt1979376",
+      //...
+      // poster:
+      "https://m.media-amazon.com/images/M/MV5BOTgxMDQwMDk0OF5BMl5BanBnXkFtZTgwNjU5OTg2NDE@._V1_SX300.jpg",
     };
  */
 
@@ -161,13 +166,16 @@ for (let i = 0; i < moviesInput.length; i++){
  * Returns all movie objects with a matching genre. Case-insensitive. If the inputted `movies` array is empty or no movies match the inputted `genre`, return `[]`.
  * @param {Object[]} movies - An array of movies. See the `movies.js` file for an example of this array.
  * @param {string} genre - The genre of a movie. (e.g. "Fantasy")
- * @returns {Object[]} An array of movies where at least one of the genres matches the `genre` inputted.
+ * @returns {Object[]} An array of matching MOVIE OBJECTS at INDEX
+ *  where at least one of the genres matches the `genre` inputted.
  *
  * EXAMPLE:
- *  filterByGenre(movies, "Mystery");
+ *  filterByGenre(movies, "Adventure");
  *  //> [
-      {
-        // Coco
+      { ...
+        // movie: Coco
+        ...
+        genre: "Animation, Action, Adventure",
       }
     ]
  *
@@ -212,7 +220,20 @@ if (moviesInput.length > 0){
       }
     ];
  */
-function getAllMoviesReleasedAtOrBeforeYear() {}
+function getAllMoviesReleasedAtOrBeforeYear(moviesInput, year) {
+let movieMatches = [];
+if (moviesInput.length > 0){
+  for (let i = 0; i < moviesInput.length; i++){
+    let movie = moviesInput[i];
+    date = movie.released.split(" ")
+    movieYear = date[2];
+    if (movieYear <= year){
+          movieMatches.push(movie);
+    }
+  }
+  } 
+    return movieMatches;
+}
 
 /**
  * getBiggestBoxOfficeMovie()

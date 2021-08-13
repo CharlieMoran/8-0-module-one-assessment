@@ -209,14 +209,23 @@ if (moviesInput.length > 0){
  * EXAMPLE:
  *  getAllMoviesReleasedAtOrBeforeYear(movies, 2000);
  *  //> [
-      {
-        // The Lion King
+      {...
+        //released: "24 Jun 1994",
+        //...
+        // title: "The Lion King",
+        // ...
       },
-      {
-        // Fantasia
+      {...
+        //released: "19 Sep 1941",
+        //...
+        //title: "Fantasia",
+        //...
       },
-      {
-        // James and the Giant Peach
+      {...
+        //released: "12 Apr 1996",
+        //...
+        //title: "James and the Giant Peach",
+        //...
       }
     ];
  */
@@ -246,7 +255,22 @@ if (moviesInput.length > 0){
  *  getBiggestBoxOfficeMovie(movies);
  *  //> "Incredibles 2"
  */
-function getBiggestBoxOfficeMovie() {}
+function getBiggestBoxOfficeMovie(moviesInput) {
+  let movieMatches = [null];
+  let highest = 0;
+  if (moviesInput.length > 0){
+    for (let i = 0; i < moviesInput.length; i++){
+      let movie = moviesInput[i];
+      sales = movie.boxOffice.split("$");
+      salesNum = parseInt(sales[1].replace(/,/g,""))
+      if (salesNum > highest){
+            movieMatches[0] = movie.title;
+            highest = salesNum;
+      }
+    }
+    } 
+      return movieMatches[0];
+}
 
 // Do not change anything below this line.
 module.exports = {

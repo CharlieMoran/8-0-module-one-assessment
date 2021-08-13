@@ -134,7 +134,7 @@ return ratingCountObj;
  * If the inputted `movies` array is empty or the ID does not match any movie, return `null`.
  * @param {Object[]} movies - An array of movies. See the `movies.js` file for an example of this array.
  * @param {string} id - A unique `imdbID`.
- * @returns {Object|null} The movie object with the matching `imdbID`.
+ * @returns {Object|null} The MOVIE OBJECT INDEX with the matching `imdbID`.
  *
  * EXAMPLE:
  *  findById(movies, "tt1979376");
@@ -175,7 +175,20 @@ for (let i = 0; i < moviesInput.length; i++){
  *  filterByGenre(movies, "Horror")
  *  //> []
  */
-function filterByGenre() {}
+function filterByGenre(moviesInput, genreRequest) {
+let movieMatches = [];
+if (moviesInput.length > 0){
+  let query = genreRequest.charAt(0).toUpperCase() + genreRequest.slice(1).toLowerCase();
+  for (let i = 0; i < moviesInput.length; i++){
+    let movie = moviesInput[i];
+    if (movie.genre.includes(query)){
+          movieMatches.push(movie);
+    }
+  }
+  } 
+    return movieMatches;
+  }
+
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()

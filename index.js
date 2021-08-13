@@ -130,7 +130,8 @@ return ratingCountObj;
 /**
  * findById()
  * -----------------------------
- * Returns a movie object from an array of objects based on the ID. If the inputted `movies` array is empty or the ID does not match any movie, return `null`.
+ * Returns a movie object from an array of objects based on the ID. 
+ * If the inputted `movies` array is empty or the ID does not match any movie, return `null`.
  * @param {Object[]} movies - An array of movies. See the `movies.js` file for an example of this array.
  * @param {string} id - A unique `imdbID`.
  * @returns {Object|null} The movie object with the matching `imdbID`.
@@ -141,7 +142,18 @@ return ratingCountObj;
       // Toy Story 4
     };
  */
-function findById() {}
+
+function findById(moviesInput, idN) {
+if (moviesInput.length > 0){
+for (let i = 0; i < moviesInput.length; i++){
+  let movie = moviesInput[i];
+  if (movie.imdbID.includes(idN)){
+        return movie;
+  }
+}
+} 
+  return null;
+}
 
 /**
  * filterByGenre()

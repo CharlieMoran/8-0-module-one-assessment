@@ -61,7 +61,8 @@ function getHighestMetascore(movies) {
 /**
  * getAverageIMDBRating()
  * -----------------------------
- * Averages all of the IMDB ratings from all movies and returns it, as a number. If the inputted `movies` array is empty, return `0`.
+ * Averages all of the IMDB ratings from all movies and returns it, as a number. 
+ * If the inputted `movies` array is empty, return `0`.
  * @param {Object[]} movies - An array of movies. See the `movies.js` file for an example of this array.
  * @returns {number} The average IMDB rating across all movies.
  *
@@ -69,7 +70,20 @@ function getHighestMetascore(movies) {
  *  getAverageIMDBRating(movies);
  *  //> 7.76
  */
-function getAverageIMDBRating() {}
+function getAverageIMDBRating(moviesInput) {
+  let rating = 0;
+  if (moviesInput.length > 0){
+    let long = moviesInput.length;
+    for (let i = 0; i < long; i++){
+      rating = rating + Number(moviesInput[i].imdbRating);
+      averageRating = Number((rating/long).toFixed(2));
+  } 
+} else {
+  averageRating = 0;
+}
+  
+  return averageRating;
+}
 
 /**
  * countByRating()
